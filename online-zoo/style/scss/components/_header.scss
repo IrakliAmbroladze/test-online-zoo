@@ -1,3 +1,5 @@
-.header{
-  background-color: yellow;
+@use "../abstracts" as *;
+
+.header {
+  background-color: $color-primary;
 }
