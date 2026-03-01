@@ -51,6 +51,7 @@
     width: 233px;
 
     .close-modal {
+      user-select: none;
       position: absolute;
       top: 40px;
       right: 35px;
@@ -137,6 +138,10 @@
 
     .burger-menu {
       display: none
+    }
+
+    .burger-modal.show-burger-modal {
+      display: none;
     }
 
     .nav {
