@@ -260,5 +260,43 @@
 
       }
     }
+
+    .welcome {
+      margin: 150px;
+
+      .welcome-card-1,
+      .welcome-card-2 {
+        @include flex-row-center;
+        justify-content: space-between;
+
+      }
+
+      .welcome-card-1 {
+
+        .welcome-image {
+          order: 2;
+        }
+
+        .welcome-text-content {
+          order: 1;
+        }
+
+      }
+
+      .welcome-card-2 {
+        margin-top: 150px;
+
+        .welcome-text-content {
+          padding: 0
+        }
+      }
+
+      .welcome-image {
+        width: 800px;
+        height: 531px;
+
+      }
+    }
+
   }
 }
