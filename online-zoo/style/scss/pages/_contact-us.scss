@@ -91,24 +91,34 @@
   }
 }
 
+
 @media(min-width: 1440px) {
   .page-contact-us {
     .main {
       .container {
-
-        .cover-image {
-          width: 100%;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-
-        }
-
         .form-container {
           @include flex-row-center;
+          justify-content: space-between;
+          align-items: start;
+
+          .info {
+            max-width: 545px;
+            gap: 30px;
+            align-items: start;
+
+            p {
+              text-align: start
+            }
+          }
+
+
+          form {
+            max-width: 680px;
+
+            button {
+              align-self: self-start;
+            }
+          }
         }
       }
     }
