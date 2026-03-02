@@ -82,6 +82,12 @@
         background-color: transparent;
         color: white;
         gap: 10px;
+
+        span {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 150%;
+        }
       }
 
     }
@@ -129,4 +135,65 @@
       }
     }
   }
+}
+
+@media(min-width: 640px) {
+  .footer {
+
+
+    .container {
+      .upper-footer {
+        padding: 50px 97px;
+        gap: 50px;
+
+        .logos {
+          @include flex-row-center;
+          gap: 80px;
+        }
+
+        .nav {
+          .nav-link {
+            font-size: 18px;
+          }
+        }
+
+        .btn {
+          min-height: 74px;
+          max-width: 360px;
+        }
+
+      }
+
+      .separator {
+        width: 100%;
+        height: 0px;
+        border: 1px solid white;
+      }
+
+      .down-footer {
+        @include flex-column-center;
+        padding: 50px 96px;
+
+        .navigations-container {
+          .soc-media-container {
+            gap: 50px;
+            min-width: 180px;
+          }
+        }
+
+        .copyright {
+
+          @include flex-row-center;
+
+          li {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
 }
