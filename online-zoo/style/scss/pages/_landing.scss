@@ -112,68 +112,6 @@
     }
   }
 
-  .donation {
-
-    background-color: $navy;
-
-    .container {
-      @include flex-column-center;
-      padding: 30px 10px 40px;
-      color: white;
-      gap: 30px;
-
-      .description {
-
-        @include flex-column-center;
-
-        gap: 30px;
-
-        h2 {
-          text-align: center;
-          font-weight: 500;
-          font-size: 26px;
-          text-transform: uppercase;
-        }
-
-        p {
-          text-align: center;
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 150%;
-        }
-      }
-
-      .quick-donate {
-        width: 100%;
-
-        @include flex-column-center;
-
-        gap: 10px;
-
-        h3 {
-          font-weight: 500;
-          font-size: 26px;
-          line-height: 130%;
-        }
-
-        .amount {
-          width: 300px;
-          height: 45px;
-          border: 1px solid white;
-          border-radius: 5px;
-          @include flex-row-center;
-
-          .donation-amount {
-            margin: 12px 26px;
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            min-width: 188px;
-          }
-        }
-      }
-    }
-  }
 }
 
 @media (min-width: 600px) {
@@ -247,32 +185,6 @@
       }
     }
 
-    .donation {
-      .container {
-        padding: 50px 20px;
-
-        .description {
-          h2 {
-            font-size: 42px;
-          }
-        }
-
-        .quick-donate {
-
-          .amount {
-            width: 363px;
-            height: 74px;
-
-            .donation-amount {
-              margin: 26px 39px;
-              font-weight: 600;
-              font-size: 18px;
-              min-width: 211px;
-            }
-          }
-        }
-      }
-    }
 
   }
 }
@@ -323,45 +235,6 @@
       }
     }
 
-    .donation {
-      .container {
-        padding: 50px 100px;
-
-        @include flex-row-center;
-        align-items: flex-start;
-        justify-content: space-between;
-
-        .description {
-          max-width: 577px;
-
-          h2 {
-            font-size: 42px;
-          }
-
-          h2,
-          p {
-            text-align: start;
-          }
-        }
-
-        .quick-donate {
-          max-width: 320px;
-          align-items: start;
-
-          .amount {
-            width: 320px;
-            height: 74px;
-
-            .donation-amount {
-              margin: 26px 14px;
-              font-weight: 600;
-              font-size: 18px;
-              min-width: 211px;
-            }
-          }
-        }
-      }
-    }
 
   }
 }
@@ -433,18 +306,6 @@
       }
     }
 
-    .donation {
-      .container {
-        padding: 50px 0;
-
-        align-items: flex-start;
-        justify-content: space-between;
-
-        .description {
-          max-width: 890px;
-        }
-      }
-    }
 
   }
 }
