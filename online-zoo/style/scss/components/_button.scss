@@ -19,4 +19,15 @@
     background: #00A092;
     color: white;
   }
+
+  &--pure-text-orange {
+    color: $orange;
+    background-color: transparent;
+  }
+
+  &--pure-text-orange:hover {
+    background-color: $orange;
+    color: $white;
+  }
+
 }

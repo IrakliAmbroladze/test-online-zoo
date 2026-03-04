@@ -1,0 +1,147 @@
+@use "../abstracts" as *;
+
+.meet-pets {
+  overflow: hidden;
+
+  .container {
+    padding: 50px 0;
+    @include flex-column-center;
+    gap: 30px;
+
+    h2 {
+      color: $turquoise;
+      font-weight: 500;
+      font-size: 26px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 150%;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .slider-pets-in-zoo {
+      @include flex-row-center;
+      gap: 20px;
+      align-self: self-start;
+      padding: 0 10px;
+
+      .animals-card {
+        position: relative;
+
+        label {
+          @include flex-row-center;
+          position: absolute;
+          background-color: $navy;
+          width: 90px;
+          height: 60px;
+          border-radius: 5px 0 0 0;
+          left: 0;
+        }
+
+        @include flex-column-center;
+        justify-content: space-between;
+        width: 300px;
+        height: 600px;
+        border-radius: 5px;
+        background-color: $navy;
+
+        color: white;
+        padding-bottom: 10px;
+
+        .cover {
+          height: 333px;
+          width: 100%;
+
+          img {
+            border-radius: 5px 5px 0 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .title {
+          font-weight: 500;
+          font-size: 26px;
+          line-height: 130%;
+        }
+
+        p {
+
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 150%;
+        }
+
+        button {
+          width: 240px;
+          height: 73px;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-right: 10px
+          }
+
+        }
+      }
+    }
+
+
+
+
+    .viewport {
+      overflow: hidden;
+
+      .track {
+        display: flex;
+        flex-wrap: nowrap;
+        transition: transform 0.4s ease;
+
+        .column {
+          flex: 0 0 33.333%; // 3 columns desktop
+          display: flex;
+          flex-direction: column;
+
+          .item {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+          }
+
+          /* Mobile: 1 column */
+          @media (max-width: 599px) {
+            .item {
+              flex: 0 0 100%;
+            }
+          }
+
+          /* Desktop: 3 columns */
+          @media (min-width: 1024px) {
+            .item {
+              flex: 0 0 33.3333%;
+            }
+          }
+
+          /* Tablet: 2 columns */
+          @media (min-width: 600px) and (max-width: 1023px) {
+            .item {
+              flex: 0 0 50%;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+}
