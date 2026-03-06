@@ -4,15 +4,15 @@ export const slider = () => {
   const slider = document.getElementById("slider");
 
   let counter = 0;
-  const step_width = 50;
+  const step_width = slider.offsetWidth / 4;
   left_arrow.addEventListener("click", () => {
-    counter--;
+    counter++;
     console.log(counter);
     console.log("clicked on left arrow");
     slider.style.transform = `translate(${counter * step_width}px)`;
   });
   right_arrow.addEventListener("click", () => {
-    counter++;
+    counter--;
     console.log(counter);
     console.log("clicked on right arrow");
     slider.style.transform = `translate(${counter * step_width}px)`;
