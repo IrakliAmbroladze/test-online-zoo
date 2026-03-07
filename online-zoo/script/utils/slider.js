@@ -13,17 +13,27 @@ export const slider = () => {
   const card_width = document.querySelector(".animals-card").offsetWidth;
 
   const step_width = card_width + gap;
-  console.log(step_width);
+
+  console.log("slider_overflow: ", slider_overflow);
   let accumulated_transformation = 0;
   left_arrow.addEventListener("click", () => {
-    if (accumulated_transformation >= 0) return;
+    if (accumulated_transformation >= 0) {
+      slider.style.transform = `translate(${accumulated_transformation}px)`;
+      return;
+    }
     accumulated_transformation += step_width;
     console.log(accumulated_transformation);
     slider.style.transform = `translate(${accumulated_transformation}px)`;
   });
   right_arrow.addEventListener("click", () => {
-    if (-slider_overflow >= accumulated_transformation) return;
     accumulated_transformation -= step_width;
+    const remaining_overflow = slider_overflow + accumulated_transformation;
+    console.log("remaining_overflow", remaining_overflow);
+    if (remaining_overflow < 0) {
+      slider.style.transform = `translate(${-slider_overflow}px)`;
+      accumulated_transformation -= remaining_overflow;
+      return;
+    }
     console.log(accumulated_transformation);
     slider.style.transform = `translate(${accumulated_transformation}px)`;
   });
