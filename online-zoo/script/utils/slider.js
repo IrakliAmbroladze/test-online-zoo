@@ -16,14 +16,15 @@ export const slider = () => {
   console.log(step_width);
   let accumulated_transformation = 0;
   left_arrow.addEventListener("click", () => {
+    if (accumulated_transformation >= 0) return;
     accumulated_transformation += step_width;
-    console.log("clicked on left arrow");
+    console.log(accumulated_transformation);
     slider.style.transform = `translate(${accumulated_transformation}px)`;
   });
   right_arrow.addEventListener("click", () => {
+    if (-slider_overflow >= accumulated_transformation) return;
     accumulated_transformation -= step_width;
     console.log(accumulated_transformation);
-    console.log("clicked on right arrow");
     slider.style.transform = `translate(${accumulated_transformation}px)`;
   });
 };
