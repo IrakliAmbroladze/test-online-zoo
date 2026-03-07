@@ -11,9 +11,10 @@ export const slider = () => {
   const slider_styles = window.getComputedStyle(slider);
   const gap = slider_styles.getPropertyValue("gap");
   const gap_number = Number(gap.slice(0, -2));
+  const card_width = document.querySelector(".animals-card").offsetWidth;
 
   let counter = 0;
-  const step_width = slider_width / 4;
+  const step_width = card_width + gap;
   left_arrow.addEventListener("click", () => {
     if (counter > -1) {
       return;
