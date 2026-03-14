@@ -8,12 +8,6 @@ export const Header = (): void => {
   if (isLoggedIn) {
     usernameEl.innerHTML = username;
   }
-  document.getElementById("btn-sign-in")?.addEventListener("click", () => {
-    console.log("clicked sign in");
-  });
-  document.getElementById("btn-register")?.addEventListener("click", () => {
-    console.log("clicked register");
-  });
   createModal({
     triggerSelector: ".user",
     modalSelector: "#user-modal",
