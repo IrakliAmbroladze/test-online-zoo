@@ -1,3 +1,5 @@
+import App from "./App";
+import { Header } from "./components/Header";
 import { create_slider } from "./utils/slider/create_slider";
 
 async function loadComponent(selector: string, url: string) {
@@ -29,8 +31,12 @@ function setActiveNavLink() {
   });
 }
 
-loadComponent("#header", "/components/header.html");
-loadComponent("#footer", "/components/footer.html");
+async function init() {
+  await loadComponent("#header", "/components/header.html");
+  await loadComponent("#footer", "/components/footer.html");
+  Header();
+}
+init();
 const left_arrow = document.getElementById("sldr_left_arr");
 const right_arrow = document.getElementById("sldr_right_arr");
 const slider_container = document.getElementById("slider");
@@ -44,3 +50,5 @@ create_slider({
   viewport,
   cardSelector: ".animals-card",
 });
+
+App();
