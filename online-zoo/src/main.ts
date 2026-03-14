@@ -1,3 +1,4 @@
+import "../style/scss/main.scss";
 import App from "./App";
 import { loadComponent } from "./utils/loadComponent";
 
