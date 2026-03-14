@@ -1,8 +1,9 @@
 import { Header } from "./components/Header";
+import { user } from "./constants/user";
 import { create_slider } from "./utils/slider/create_slider";
 
 export default function App() {
-  Header();
+  Header({ user });
   const container = document.getElementById("pets-container");
   if (!container) return;
   const left_arrow = document.getElementById("sldr_left_arr");

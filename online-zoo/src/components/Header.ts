@@ -1,19 +1,13 @@
+import type { User } from "../types/User";
 import { createModal } from "../utils/createModal";
 
-type User = {
-  name: string;
-  email: string;
+type HeaderProps = {
+  user: User | null;
 };
 
-export const Header = (): void => {
+export const Header = ({ user }: HeaderProps): void => {
   const usernameEl = document.getElementById("user-name");
-  if (!usernameEl) return;
-  const user: User = {
-    name: "Irakli",
-    email: "ambroladzeirakli@gmail.com",
-  };
-  const isLoggedIn = true;
-  if (isLoggedIn) {
+  if (usernameEl && user) {
     usernameEl.innerHTML = user.name;
   }
   createModal({
@@ -28,10 +22,10 @@ export const Header = (): void => {
     "#user-modal .non-logged-in",
   );
 
-  if (loggedIn) loggedIn.style.display = isLoggedIn ? "flex" : "none";
-  if (notLoggedIn) notLoggedIn.style.display = isLoggedIn ? "none" : "flex";
+  if (loggedIn) loggedIn.style.display = user ? "flex" : "none";
+  if (notLoggedIn) notLoggedIn.style.display = user ? "none" : "flex";
   const elUserLogged = document.querySelector(".logged-in");
-  if (elUserLogged) {
+  if (elUserLogged && user) {
     elUserLogged.innerHTML = `
           <div>name: ${user.name}</div>
           <div>${user.email}</div>
