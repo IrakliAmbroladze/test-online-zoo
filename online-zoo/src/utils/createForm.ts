@@ -36,6 +36,8 @@ export const createForm = ({
   btnSubmit.classList.add("btn");
   btnSubmit.classList.add("btn--orange");
   form.appendChild(btnSubmit);
-  form.action = endpointURL;
-  form.method = "POST";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  });
 };
