@@ -45,5 +45,26 @@ export const createForm = ({
       body[input.name] = getFormFieldValue({ form, name: input.name });
     });
     console.log("body is: ", body);
+    try {
+      const response = await fetch(endpointURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      if (!response.ok) {
+        const errorBody = await response.json();
+        console.log("error body:", errorBody);
+      } else {
+        console.log("success response");
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error("Caught an Error object:", err.message);
+      } else {
+        console.error("Caught an unknown error type:", err);
+      }
+    }
   });
 };
