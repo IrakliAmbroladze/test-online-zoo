@@ -14,7 +14,7 @@ type ValidationRule = {
   message: string;
 };
 
-type Input = {
+export type Input = {
   type: string;
   placeholder?: string;
   name: string;
