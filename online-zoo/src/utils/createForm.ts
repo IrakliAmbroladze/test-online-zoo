@@ -1,10 +1,17 @@
+type Input = {
+  type: string;
+  placeholder?: string;
+};
+
 type CreateFormProps = {
   formNodeId: string | null;
   title?: string;
+  inputs: Input[];
 };
 export const createForm = ({
   formNodeId,
   title = "Form",
+  inputs,
 }: CreateFormProps): void => {
   if (!formNodeId) return;
   const elForm = document.getElementById(formNodeId);
@@ -12,4 +19,5 @@ export const createForm = ({
   const elTitle = document.createElement("h1");
   elTitle.textContent = title;
   elForm?.appendChild(elTitle);
+  console.log(inputs);
 };

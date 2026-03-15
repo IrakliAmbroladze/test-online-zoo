@@ -1,6 +1,7 @@
 import { Feedbacks } from "./components/Feedbacks";
 import { Header } from "./components/Header";
 import { MeetPets } from "./components/MeetPets";
+import { REGISTRATION_INPUTS } from "./constants/registration";
 import { createForm } from "./utils/createForm";
 // import { user } from "./constants/user";
 import { create_slider } from "./utils/slider/create_slider";
@@ -26,7 +27,11 @@ export default async function App() {
   }
 
   if (page === "page-registration") {
-    createForm({ formNodeId: "form-registration", title: "Registration" });
+    createForm({
+      formNodeId: "form-registration",
+      title: "Registration",
+      inputs: REGISTRATION_INPUTS,
+    });
   }
 }
 
