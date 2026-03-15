@@ -41,3 +41,7 @@ a {
   text-align: center;
   @include flex-row-center
 }
+
+form {
+  @include flex-column-center
+}

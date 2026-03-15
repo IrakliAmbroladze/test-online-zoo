@@ -20,4 +20,12 @@ export const createForm = ({
   elTitle.textContent = title;
   elForm?.appendChild(elTitle);
   console.log(inputs);
+  const form = document.createElement("form");
+  elForm?.appendChild(form);
+  inputs.map((input) => {
+    const elInput = `
+    <input type=${input.type} placeholder=${input.placeholder ? input.placeholder : ""}>
+`;
+    form.insertAdjacentHTML("beforeend", elInput);
+  });
 };
