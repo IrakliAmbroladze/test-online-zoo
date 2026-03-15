@@ -26,7 +26,7 @@ export default async function App() {
   }
 
   if (page === "page-registration") {
-    createForm({ formNodeId: "form-registration" });
+    createForm({ formNodeId: "form-registration", title: "Registration" });
   }
 }
 
