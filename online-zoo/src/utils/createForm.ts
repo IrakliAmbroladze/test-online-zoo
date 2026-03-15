@@ -15,11 +15,9 @@ export const createForm = ({
 }: CreateFormProps): void => {
   if (!formNodeId) return;
   const elForm = document.getElementById(formNodeId);
-  console.log(elForm);
   const elTitle = document.createElement("h1");
   elTitle.textContent = title;
   elForm?.appendChild(elTitle);
-  console.log(inputs);
   const form = document.createElement("form");
   elForm?.appendChild(form);
   inputs.map((input) => {
@@ -28,4 +26,11 @@ export const createForm = ({
 `;
     form.insertAdjacentHTML("beforeend", elInput);
   });
+  const btnSubmit = document.createElement("button");
+  btnSubmit.type = "submit";
+  btnSubmit.textContent = "submit";
+  btnSubmit.classList.add("btnSubmit");
+  btnSubmit.classList.add("btn");
+  btnSubmit.classList.add("btn--green");
+  form.appendChild(btnSubmit);
 };

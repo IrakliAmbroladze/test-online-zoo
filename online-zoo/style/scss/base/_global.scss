@@ -53,4 +53,14 @@ form {
     border-radius: 4px;
     box-shadow: -1px 2px 4px -3px black;
   }
+
+  .btnSubmit {
+    margin: 20px 0;
+    max-width: 200px;
+    min-height: 40px;
+  }
+
+  .btnSubmit:active {
+    transform: scale(0.95)
+  }
 }
