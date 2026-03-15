@@ -6,7 +6,11 @@ import { createForm } from "./utils/createForm";
 import { create_slider } from "./utils/slider/create_slider";
 
 export default async function App() {
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  let user;
+  const userFromStorage = localStorage.getItem("user");
+  if (userFromStorage) {
+    user = JSON.parse(userFromStorage);
+  }
   Header({ user });
 
   const page = document.body.className;

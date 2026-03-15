@@ -1,9 +1,24 @@
 import { getFormFieldValue } from "./getFormFieldValue";
 
+type ValidationRule = {
+  test: (
+    value: string,
+    getFormFieldValue: ({
+      form,
+      name,
+    }: {
+      form: HTMLFormElement;
+      name: string;
+    }) => string,
+  ) => boolean;
+  message: string;
+};
+
 type Input = {
   type: string;
   placeholder?: string;
   name: string;
+  validationRules?: ValidationRule[];
 };
 
 type CreateFormProps = {
@@ -25,12 +40,53 @@ export const createForm = ({
   elForm?.appendChild(elTitle);
   const form = document.createElement("form");
   elForm?.appendChild(form);
-  inputs.map((input) => {
-    const elInput = `
-    <input type=${input.type} placeholder=${input.placeholder ? input.placeholder : ""} name=${input.name}>
-`;
-    form.insertAdjacentHTML("beforeend", elInput);
+
+  const validityMap: Record<string, boolean> = {};
+  inputs.forEach((input) => (validityMap[input.name] = false));
+
+  inputs.forEach((cfg) => {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("input-wrapper");
+
+    const input = document.createElement("input");
+    input.type = cfg.type;
+    input.placeholder = cfg.placeholder ?? "";
+    input.name = cfg.name;
+
+    const errorMsg = document.createElement("span");
+    errorMsg.classList.add("input-error");
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(errorMsg);
+    form.appendChild(wrapper);
+
+    input.addEventListener("focus", () => {
+      input.classList.remove("input--invalid");
+      errorMsg.textContent = "";
+    });
+
+    input.addEventListener("blur", () => {
+      if (!cfg.validationRules || cfg.validationRules.length === 0) {
+        validityMap[cfg.name] = input.value.trim().length > 0;
+        return;
+      }
+
+      const failedRule = cfg.validationRules.find(
+        (rule) => !rule.test(input.value, getFormFieldValue),
+      );
+
+      if (failedRule) {
+        input.classList.add("input--invalid");
+        errorMsg.textContent = failedRule.message;
+        validityMap[cfg.name] = false;
+      } else {
+        input.classList.remove("input--invalid");
+        errorMsg.textContent = "";
+        validityMap[cfg.name] = true;
+      }
+    });
   });
+
   const btnSubmit = document.createElement("button");
   btnSubmit.type = "submit";
   btnSubmit.textContent = "submit";
