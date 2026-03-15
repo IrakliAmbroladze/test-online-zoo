@@ -124,6 +124,8 @@
   }
 
   .what-users-think {
+    display: flex;
+    flex-direction: column;
     position: relative;
     height: 1880px;
     width: 100%;
@@ -146,7 +148,7 @@
     }
 
     .intro {
-      padding: 100px 40px;
+      padding: 100px 40px 50px;
       color: $white;
 
       h2 {
@@ -163,6 +165,15 @@
         line-height: 130%;
         margin-top: 30px;
       }
+    }
+
+    .content-container {
+      margin-left: 140px;
+      margin-bottom: 150px;
+      height: 1000px;
+      background-color: gray;
+      flex: 1;
+      overflow: hidden;
     }
   }
 
