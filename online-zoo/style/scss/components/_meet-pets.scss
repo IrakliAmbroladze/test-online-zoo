@@ -78,6 +78,7 @@
     }
 
     .slider-pets-in-zoo {
+      min-height: 600px;
       @include flex-row-center;
       gap: 20px;
       align-self: self-start;
