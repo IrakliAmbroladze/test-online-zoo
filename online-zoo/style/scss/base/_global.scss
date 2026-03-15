@@ -41,3 +41,64 @@ a {
   text-align: center;
   @include flex-row-center
 }
+
+form {
+  @include flex-column-center;
+  margin: 20px 0;
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 5px 0;
+  }
+
+  input {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: -1px 2px 4px -3px black;
+    transition: border-color 0.2s;
+
+    &.input--invalid {
+      border-color: #e53935;
+      padding-right: 36px;
+    }
+  }
+
+  .input-error {
+    font-size: 12px;
+    color: #e53935;
+    min-height: 16px;
+    margin-top: 2px;
+    padding-left: 4px;
+  }
+
+  .form-server-error {
+    color: #e53935;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 20px;
+    text-align: center;
+  }
+
+  .btn-submit {
+    margin: 20px 0 0;
+    max-width: 200px;
+    min-height: 40px;
+
+    &:not(:disabled):active {
+      transform: scale(0.95);
+    }
+
+    &:not(:disabled):hover {
+      background-color: $orange-dark;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,15 +1,44 @@
 import { Feedbacks } from "./components/Feedbacks";
 import { Header } from "./components/Header";
 import { MeetPets } from "./components/MeetPets";
-import { user } from "./constants/user";
+import { REGISTRATION_INPUTS } from "./constants/registration";
+import { createForm } from "./utils/createForm";
 import { create_slider } from "./utils/slider/create_slider";
 
 export default async function App() {
+  let user;
+  const userFromStorage = localStorage.getItem("user");
+  if (userFromStorage) {
+    user = JSON.parse(userFromStorage);
+  }
   Header({ user });
-  await MeetPets();
-  await Feedbacks();
-  initPetsSlider();
-  initFeedbackSlider();
+
+  const page = document.body.className;
+
+  if (page === "page-landing") {
+    try {
+      await MeetPets();
+    } catch (e) {
+      console.error(e);
+    }
+    try {
+      await Feedbacks();
+    } catch (e) {
+      console.error(e);
+    }
+    initPetsSlider();
+    initFeedbackSlider();
+  }
+
+  if (page === "page-registration") {
+    createForm({
+      formNodeId: "form-registration",
+      title: "Registration",
+      inputs: REGISTRATION_INPUTS,
+      endpointURL:
+        "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/register",
+    });
+  }
 }
 
 function initPetsSlider() {

@@ -1,0 +1,8 @@
+@use "../abstracts/" as *;
+
+.page-registration {
+  .main {
+    min-height: calc(100vh - 110px);
+    @include flex-column-center
+  }
+}
