@@ -21,7 +21,7 @@ function setActiveNavLink() {
 
   const currentPath = normalize(window.location.pathname);
 
-  const links: NodeListOf<Element> = document.querySelectorAll(".nav-link");
+  const links = document.querySelectorAll<HTMLAnchorElement>(".nav-link");
 
   links.forEach((link) => {
     const linkPath = normalize(new URL(link.href).pathname);
