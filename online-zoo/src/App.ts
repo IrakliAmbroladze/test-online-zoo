@@ -1,6 +1,7 @@
 import { Feedbacks } from "./components/Feedbacks";
 import { Header } from "./components/Header";
 import { MeetPets } from "./components/MeetPets";
+import Zoos from "./components/Zoos";
 import { REGISTRATION_INPUTS } from "./constants/registration";
 import { SIGN_IN_INPUTS } from "./constants/signin";
 import { createForm } from "./utils/createForm";
@@ -29,6 +30,14 @@ export default async function App() {
     }
     initPetsSlider();
     initFeedbackSlider();
+  }
+
+  if (page === "page-zoos") {
+    try {
+      await Zoos();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   if (page === "page-registration") {
