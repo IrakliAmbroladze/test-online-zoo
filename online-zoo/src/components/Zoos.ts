@@ -3,7 +3,7 @@ import type { Camera } from "../types/Camera";
 
 export default async function Zoos() {
   enum Numbers {
-    zero,
+    zero = 1,
     one,
     two,
     three,
