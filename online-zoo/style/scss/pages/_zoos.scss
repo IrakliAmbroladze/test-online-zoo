@@ -33,6 +33,16 @@
           rotate: 180deg;
         }
       }
+
+      .cameras-pet-list {
+
+        .pet-camera-card {
+          height: 170px;
+          border-bottom: 1px solid $white;
+          color: $white;
+          @include flex-row-center
+        }
+      }
     }
 
     .shrinked {

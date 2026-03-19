@@ -27,6 +27,14 @@ export default async function Zoos() {
   try {
     const cameras: Camera[] = await fetchCameras();
     container.innerHTML = "";
+    if (cameras.length > 0) {
+      cameras.forEach((el) => {
+        const elPetCameraCard = document.createElement("div");
+        elPetCameraCard.classList.add("pet-camera-card");
+        elPetCameraCard.innerHTML = el.text;
+        container.appendChild(elPetCameraCard);
+      });
+    }
 
     console.log(cameras);
   } catch (err) {
