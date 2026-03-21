@@ -5,14 +5,40 @@
 // import { REGISTRATION_INPUTS } from "./constants/registration";
 // import { SIGN_IN_INPUTS } from "./constants/signin";
 // import { createForm } from "./utils/createForm";
+
+import { Route, Routes } from "react-router-dom";
+
 // import { create_slider } from "./utils/slider/create_slider";
 export default function App() {
   return (
     <div>
       <h1>start online-zoo</h1>
+      <Routes>
+        <Route path="/" element={<div>something</div>} />
+      </Routes>
     </div>
   );
 }
+
+// import { Header } from "./components/Header";
+// import { Footer } from "./components/Footer";
+// import { Route, Routes } from "react-router-dom";
+// import Home from "./components/Home";
+// import Map from "./components/Map";
+// import Zoos from "./components/Zoos";
+// import ContactUs from "./components/ContactUs";
+//
+// function App() {
+//   return (
+//     <div className="flex flex-col h-dvh">
+//       <Header />
+//       <main className="flex-1">
+//       </main>
+//       <Footer />
+//     </div>
+//   );
+// }
+
 // export default async function App() {
 //   let user;
 //   const userFromStorage = localStorage.getItem("user");
