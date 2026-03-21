@@ -1,1 +1,1 @@
-# rsschool-online-zoo
+# online-zoo
