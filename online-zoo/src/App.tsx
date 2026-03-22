@@ -9,15 +9,15 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { Home } from "./components/Home";
 
 // import { create_slider } from "./utils/slider/create_slider";
 export default function App() {
   return (
     <>
       <Header />
-      <h1>start online-zoo</h1>
       <Routes>
-        <Route path="/" element={<div>something</div>} />
+        <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
     </>
