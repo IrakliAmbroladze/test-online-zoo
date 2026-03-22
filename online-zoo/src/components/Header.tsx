@@ -16,9 +16,9 @@ export const Header = () => {
               <Link to="/map/" className="nav-link">
                 Map
               </Link>
-              <a href="/zoos/" className="nav-link">
+              <Link to="/zoos/" className="nav-link">
                 Zoos
-              </a>
+              </Link>
               <Link to="/contact-us/" className="nav-link">
                 Contact us
               </Link>
