@@ -11,6 +11,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
 import { Map } from "./components/Map";
+import { ContactUs } from "./components/ContactUs";
 
 // import { create_slider } from "./utils/slider/create_slider";
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
       <Footer />
     </>

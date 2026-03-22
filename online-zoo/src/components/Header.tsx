@@ -19,9 +19,9 @@ export const Header = () => {
               <a href="/zoos/" className="nav-link">
                 Zoos
               </a>
-              <a href="/contact-us/" className="nav-link">
+              <Link to="/contact-us/" className="nav-link">
                 Contact us
-              </a>
+              </Link>
               <a
                 href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
                 className="nav-link"
