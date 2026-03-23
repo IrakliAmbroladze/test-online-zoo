@@ -1,6 +1,7 @@
 import { useState, type JSX } from "react";
 import type { User } from "../types/User";
 import { Link } from "react-router-dom";
+import { UserModal } from "./UserModal";
 
 type HeaderProps = {
   user: User | null;
@@ -68,26 +69,7 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
                 {user && user.name}
               </li>
             </ul>
-            {isUserModalOpen && (
-              <div id="user-modal" className="user-modal show-user-modal">
-                {user ? (
-                  <div className="logged-in" id="user-logged-in"></div>
-                ) : (
-                  <div className="non-logged-in">
-                    <a href="/sign-in/">
-                      <button id="btn-sign-in" className="btn btn--orange">
-                        SignIn
-                      </button>
-                    </a>
-                    <a href="/registration/">
-                      <button id="btn-register" className="btn btn--green">
-                        Registration
-                      </button>
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
+            {isUserModalOpen && <UserModal user={user} />}
           </div>
           <div className="burger-menu">
             <div></div>
