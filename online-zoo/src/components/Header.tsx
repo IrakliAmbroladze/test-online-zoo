@@ -70,7 +70,10 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
               </li>
             </ul>
             {isUserModalOpen && (
-              <UserModal user={user} setIsUserModalOpen={setIsUserModalOpen} />
+              <UserModal
+                user={user}
+                handleClose={() => setIsUserModalOpen(false)}
+              />
             )}
           </div>
           <div className="burger-menu">

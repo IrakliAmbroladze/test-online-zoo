@@ -1,17 +1,18 @@
-import type { Dispatch, JSX, SetStateAction } from "react";
+import type { JSX } from "react";
 import type { User } from "../types/User";
 import { Link } from "react-router-dom";
 
 export const UserModal = ({
   user,
-  setIsUserModalOpen,
+  handleClose,
 }: {
   user: User | null;
-  setIsUserModalOpen: Dispatch<SetStateAction<boolean>>;
+  handleClose: () => void;
 }): JSX.Element => {
   const onModalClose = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsUserModalOpen((prev) => !prev);
+    localStorage.clear();
+    handleClose();
   };
   return (
     <div id="user-modal" className="user-modal show-user-modal">
