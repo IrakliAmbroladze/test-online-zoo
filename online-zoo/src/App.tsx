@@ -4,10 +4,6 @@
 // import { REGISTRATION_INPUTS } from "./constants/registration";
 // import { SIGN_IN_INPUTS } from "./constants/signin";
 // import { createForm } from "./utils/createForm";
-// import { Route, Routes } from "react-router-dom";
-// import Home from "./components/Home";
-// import Map from "./components/Map";
-// import Zoos from "./components/Zoos";
 // import ContactUs from "./components/ContactUs";
 // import { create_slider } from "./utils/slider/create_slider";
 
@@ -20,6 +16,7 @@ import { ContactUs } from "./components/ContactUs";
 import { Zoos } from "./components/Zoos";
 import type { User } from "./types/User";
 import { getUser } from "./utils/getUser";
+import SignIn from "./pages/SignIn";
 
 export default function App() {
   const user: User | null = getUser();
@@ -31,6 +28,7 @@ export default function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/zoos" element={<Zoos />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
       <Footer />
     </div>
