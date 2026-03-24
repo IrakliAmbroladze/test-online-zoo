@@ -1,4 +1,4 @@
-import type { Input } from "../utils/createForm";
+import type { Input } from "../types/Input";
 
 const onlyEnglishLetters = /^[A-Za-z]+$/;
 const startsWithLetter = /^[A-Za-z]/;
