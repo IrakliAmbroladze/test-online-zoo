@@ -1,10 +1,5 @@
 // import { Feedbacks } from "./components/Feedbacks";
 // import { MeetPets } from "./components/MeetPets";
-// import Zoos from "./components/Zoos";
-// import { REGISTRATION_INPUTS } from "./constants/registration";
-// import { SIGN_IN_INPUTS } from "./constants/signin";
-// import { createForm } from "./utils/createForm";
-// import ContactUs from "./components/ContactUs";
 // import { create_slider } from "./utils/slider/create_slider";
 
 import { Route, Routes } from "react-router-dom";
@@ -17,6 +12,7 @@ import { Zoos } from "./components/Zoos";
 import type { User } from "./types/User";
 import { getUser } from "./utils/getUser";
 import SignIn from "./pages/SignIn";
+import Registration from "./pages/Registration";
 
 export default function App() {
   const user: User | null = getUser();
@@ -29,6 +25,7 @@ export default function App() {
         <Route path="/zoos" element={<Zoos />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
       <Footer />
     </div>
@@ -62,25 +59,6 @@ export default function App() {
 //     }
 //   }
 //
-//   if (page === "page-registration") {
-//     createForm({
-//       formNodeId: "form-registration",
-//       title: "Registration",
-//       inputs: REGISTRATION_INPUTS,
-//       endpointURL:
-//         "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/register",
-//     });
-//   }
-//
-//   if (page === "page-sign-in") {
-//     createForm({
-//       formNodeId: "form-sign-in",
-//       title: "Sign In",
-//       inputs: SIGN_IN_INPUTS,
-//       endpointURL:
-//         "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/login",
-//     });
-//   }
 // }
 //
 // function initPetsSlider() {
