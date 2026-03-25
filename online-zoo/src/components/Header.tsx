@@ -3,7 +3,6 @@ import type { User } from "../types/User";
 import { Link, NavLink } from "react-router-dom";
 import { UserModal } from "./UserModal";
 
-const normalize = (path: string) => path.replace(/\/$/, "") || "/";
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `nav-link${isActive ? " highlight" : ""}`;
 
@@ -16,9 +15,9 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
 
   const navLinks = [
     { to: "/", label: "About" },
-    { to: "/map/", label: "Map" },
-    { to: "/zoos/", label: "Zoos" },
-    { to: "/contact-us/", label: "Contact us" },
+    { to: "/map", label: "Map" },
+    { to: "/zoos", label: "Zoos" },
+    { to: "/contact-us", label: "Contact us" },
   ];
 
   return (
