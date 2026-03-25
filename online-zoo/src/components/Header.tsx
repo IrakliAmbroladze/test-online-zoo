@@ -77,14 +77,20 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
               />
             )}
           </div>
-          <div className="burger-menu ">
+          <div
+            className="burger-menu"
+            onClick={() => setIsBurgerModalOpen((prev) => !prev)}
+          >
             <div></div>
             <div></div>
             <div></div>
           </div>
           {isBurgerModalOpen && (
             <div className="burger-modal show-burger-modal">
-              <div className="close-modal">
+              <div
+                className="close-modal"
+                onClick={() => setIsBurgerModalOpen(false)}
+              >
                 <div className="close-line-1"></div>
                 <div className="close-line-2"></div>
               </div>
