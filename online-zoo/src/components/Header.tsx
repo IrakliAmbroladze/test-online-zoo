@@ -1,7 +1,11 @@
 import { useState, type JSX } from "react";
 import type { User } from "../types/User";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { UserModal } from "./UserModal";
+
+const normalize = (path: string) => path.replace(/\/$/, "") || "/";
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `nav-link${isActive ? " highlight" : ""}`;
 
 type HeaderProps = {
   user: User | null;
@@ -9,6 +13,14 @@ type HeaderProps = {
 export const Header = ({ user }: HeaderProps): JSX.Element => {
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
   const [isBurgerModalOpen, setIsBurgerModalOpen] = useState(false);
+
+  const navLinks = [
+    { to: "/", label: "About" },
+    { to: "/map/", label: "Map" },
+    { to: "/zoos/", label: "Zoos" },
+    { to: "/contact-us/", label: "Contact us" },
+  ];
+
   return (
     <header id="header" className="header">
       <div className="container">
@@ -18,18 +30,11 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
         <div className="header-right">
           <div className="navigations-container">
             <nav className="nav">
-              <Link to="/" className="nav-link">
-                About
-              </Link>
-              <Link to="/map/" className="nav-link">
-                Map
-              </Link>
-              <Link to="/zoos/" className="nav-link">
-                Zoos
-              </Link>
-              <Link to="/contact-us/" className="nav-link">
-                Contact us
-              </Link>
+              {navLinks.map(({ to, label }) => (
+                <NavLink key={to} to={to} end className={navLinkClass}>
+                  {label}
+                </NavLink>
+              ))}
               <a
                 href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
                 className="nav-link"
@@ -95,18 +100,17 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
                 <div className="close-line-2"></div>
               </div>
               <nav className="burger-nav">
-                <Link to="/" className="nav-link">
-                  About
-                </Link>
-                <Link to="/map/" className="nav-link">
-                  Map
-                </Link>
-                <Link to="/zoos/" className="nav-link">
-                  Zoos
-                </Link>
-                <Link to="/contact-us/" className="nav-link">
-                  Contact us
-                </Link>
+                {navLinks.map(({ to, label }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    end
+                    className={navLinkClass}
+                    onClick={() => setIsBurgerModalOpen(false)}
+                  >
+                    {label}
+                  </NavLink>
+                ))}{" "}
                 <a
                   href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
                   className="nav-link"
