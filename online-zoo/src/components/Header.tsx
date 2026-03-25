@@ -1,13 +1,26 @@
 import { useState, type JSX } from "react";
 import type { User } from "../types/User";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { UserModal } from "./UserModal";
+
+const normalize = (path: string) => path.replace(/\/$/, "") || "/";
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `nav-link${isActive ? " highlight" : ""}`;
 
 type HeaderProps = {
   user: User | null;
 };
 export const Header = ({ user }: HeaderProps): JSX.Element => {
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+  const [isBurgerModalOpen, setIsBurgerModalOpen] = useState(false);
+
+  const navLinks = [
+    { to: "/", label: "About" },
+    { to: "/map/", label: "Map" },
+    { to: "/zoos/", label: "Zoos" },
+    { to: "/contact-us/", label: "Contact us" },
+  ];
+
   return (
     <header id="header" className="header">
       <div className="container">
@@ -17,18 +30,11 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
         <div className="header-right">
           <div className="navigations-container">
             <nav className="nav">
-              <Link to="/" className="nav-link">
-                About
-              </Link>
-              <Link to="/map/" className="nav-link">
-                Map
-              </Link>
-              <Link to="/zoos/" className="nav-link">
-                Zoos
-              </Link>
-              <Link to="/contact-us/" className="nav-link">
-                Contact us
-              </Link>
+              {navLinks.map(({ to, label }) => (
+                <NavLink key={to} to={to} end className={navLinkClass}>
+                  {label}
+                </NavLink>
+              ))}
               <a
                 href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
                 className="nav-link"
@@ -76,38 +82,45 @@ export const Header = ({ user }: HeaderProps): JSX.Element => {
               />
             )}
           </div>
-          <div className="burger-menu">
+          <div
+            className="burger-menu"
+            onClick={() => setIsBurgerModalOpen((prev) => !prev)}
+          >
             <div></div>
             <div></div>
             <div></div>
           </div>
-          <div className="burger-modal">
-            <div className="close-modal">
-              <div className="close-line-1"></div>
-              <div className="close-line-2"></div>
-            </div>
-            <nav className="burger-nav">
-              <a href="/" className="nav-link">
-                About
-              </a>
-              <a href="/map/" className="nav-link">
-                Map
-              </a>
-              <a href="/zoos/" className="nav-link">
-                Zoos
-              </a>
-              <a href="/contact-us/" className="nav-link">
-                Contact us
-              </a>
-              <a
-                href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
-                className="nav-link"
-                target="_blank"
+          {isBurgerModalOpen && (
+            <div className="burger-modal show-burger-modal">
+              <div
+                className="close-modal"
+                onClick={() => setIsBurgerModalOpen(false)}
               >
-                Design
-              </a>
-            </nav>
-          </div>
+                <div className="close-line-1"></div>
+                <div className="close-line-2"></div>
+              </div>
+              <nav className="burger-nav">
+                {navLinks.map(({ to, label }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    end
+                    className={navLinkClass}
+                    onClick={() => setIsBurgerModalOpen(false)}
+                  >
+                    {label}
+                  </NavLink>
+                ))}{" "}
+                <a
+                  href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project?node-id=21-4877&t=uVdleYXKyMAVDa9i-0"
+                  className="nav-link"
+                  target="_blank"
+                >
+                  Design
+                </a>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </header>
