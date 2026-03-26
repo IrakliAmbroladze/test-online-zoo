@@ -65,10 +65,12 @@ export const MeetPets = ({
             used.
           </p>
         </div>
-        <SearchPet onSearch={handleSearch} />
-        <div className="slider-arrows">
-          <div className="left" onClick={moveLeft} />
-          <div className="right" onClick={moveRight} />
+        <div>
+          <SearchPet onSearch={handleSearch} />
+          <div className="slider-arrows">
+            <div className="left" onClick={moveLeft} />
+            <div className="right" onClick={moveRight} />
+          </div>
         </div>
         <MeetPetsSlider
           sliderRef={sliderRef}

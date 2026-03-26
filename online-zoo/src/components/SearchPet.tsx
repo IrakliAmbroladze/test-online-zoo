@@ -19,7 +19,7 @@ export const SearchPet = ({
         value={searchValue}
         onChange={handleChange}
         className="search-pet-input"
-        placeholder="Find your favourite pet"
+        placeholder="search ... your favourite pet"
       />
     </div>
   );
