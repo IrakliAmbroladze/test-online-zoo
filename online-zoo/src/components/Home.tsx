@@ -7,7 +7,10 @@ const CARD_SELECTOR = ".animals-card";
 export const Home = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const viewPortRef = useRef<HTMLDivElement>(null);
+  const feedbacksRef = useRef<HTMLDivElement>(null);
+  const feedbacksViewPortRef = useRef<HTMLDivElement>(null);
   const [VIEWPORT, setVIEWPORT] = useState(0);
+  const [feedbacksVIEWPORT, setFeedbacksVIEWPORT] = useState(0);
   const { offset, moveLeft, moveRight } = useSlider(
     sliderRef,
     VIEWPORT,
@@ -18,6 +21,10 @@ export const Home = () => {
       if (viewPortRef.current) {
         const width = viewPortRef.current.offsetWidth;
         setVIEWPORT(width);
+      }
+      if (feedbacksViewPortRef.current) {
+        const width = feedbacksViewPortRef.current.offsetWidth;
+        setFeedbacksVIEWPORT(width);
       }
     };
 
@@ -135,7 +142,11 @@ export const Home = () => {
             feedback from past clients.
           </p>
         </div>
-        <div className="content-container" id="feedback-content-container">
+        <div
+          className="content-container"
+          id="feedback-content-container"
+          ref={feedbacksRef}
+        >
           <div id="feedback-container" className="feedback-container"></div>
           <div className="slider-arrows">
             <div className="left" id="sldr_prev_arrow"></div>
