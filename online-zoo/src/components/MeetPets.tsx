@@ -32,6 +32,9 @@ export const MeetPets = ({
         setStatus("error");
       });
   }, []);
+  const handleSearch = (value: string) => {
+    console.log("value in search function", value);
+  };
 
   return (
     <section className="meet-pets">
@@ -45,7 +48,7 @@ export const MeetPets = ({
             used.
           </p>
         </div>
-        <SearchPet />
+        <SearchPet onSearch={handleSearch} />
         <div className="slider-arrows">
           <div className="left" onClick={moveLeft} />
           <div className="right" onClick={moveRight} />
