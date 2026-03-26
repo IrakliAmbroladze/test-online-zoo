@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { MeetPetsSlider } from "./MeetPetsSlider";
 import { useSlider } from "../hooks/useSlider";
 import { FeedbacksSlider } from "./FeedbacksSlider";
+import { MeetPets } from "./MeetPets";
 
 const CARD_SELECTOR = ".animals-card";
 const FEEDBACK_CARD_SELECTOR = ".feedback-card";
@@ -123,28 +123,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section className="meet-pets">
-        <div ref={viewPortRef} className="container" id="pets-container">
-          <div className="intro">
-            <h2>Meet some our pets</h2>
-            <p>
-              Do you have a special place in your heart for animals? Who are
-              your favorites? Perhaps you'd like to donate to special ones or
-              all our pets? We think it's important for you to choose how your
-              donation is used.
-            </p>
-          </div>
-          <div className="slider-arrows">
-            <div className="left" onClick={moveLeft} />
-            <div className="right" onClick={moveRight} />
-          </div>
-          <MeetPetsSlider sliderRef={sliderRef} offset={offset} />
-          <button className="btn btn--font-navy btn-favorite">
-            <span>choose your favorite</span>
-            <img src="./assets/icons/arrow.svg" alt="arrow" />
-          </button>
-        </div>
-      </section>
+      <MeetPets {...{ viewPortRef, moveLeft, moveRight, sliderRef, offset }} />
       <section className="what-users-think">
         <div className="gradient"></div>
         <div className="intro">

@@ -1,4 +1,4 @@
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, useState, type Ref } from "react";
 import { fetchPets } from "../lib/fetchPets";
 import type { Pet } from "../types/Pet";
 import { PETS } from "../types/PETS";
@@ -10,7 +10,7 @@ const getAnimalImage = (commonName: string) =>
   "koala";
 
 type Props = {
-  sliderRef: RefObject<HTMLDivElement | null>;
+  sliderRef: Ref<HTMLDivElement | null>;
   offset: number;
 };
 
