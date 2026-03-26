@@ -27,22 +27,27 @@ export const Home = () => {
   useEffect(() => {
     const handleResize = () => {
       if (viewPortRef.current) {
-        const width = viewPortRef.current.offsetWidth;
-        setVIEWPORT(width);
+        setVIEWPORT(viewPortRef.current.offsetWidth);
       }
       if (feedbacksViewPortRef.current) {
-        const width = feedbacksViewPortRef.current.offsetWidth;
-        setFeedbacksVIEWPORT(width);
+        setFeedbacksVIEWPORT(feedbacksViewPortRef.current.offsetWidth);
       }
     };
+
+    const observer = new ResizeObserver(handleResize);
+
+    if (viewPortRef.current) observer.observe(viewPortRef.current);
+    if (feedbacksViewPortRef.current)
+      observer.observe(feedbacksViewPortRef.current);
 
     handleResize();
 
     window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+    };
   }, []);
-
   return (
     <div className="page-landing">
       <main className="main">
@@ -153,7 +158,7 @@ export const Home = () => {
         <div
           className="content-container"
           id="feedback-content-container"
-          ref={feedbacksRef}
+          ref={feedbacksViewPortRef}
         >
           <FeedbacksSlider sliderRef={feedbacksRef} offset={feedbacksOffset} />
           <div className="slider-arrows">
