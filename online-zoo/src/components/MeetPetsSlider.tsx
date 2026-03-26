@@ -17,7 +17,6 @@ type Props = {
 };
 
 export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
-  console.log("pets", pets);
   const { favouritePetIds, toggleFavourite } = useFavourites();
   if (status === "loading")
     return <div className="loader">Loading pets...</div>;

@@ -18,7 +18,7 @@ export const ContactUs = () => {
                 to you as soon as we can.
               </p>
             </div>
-            <form onsubmit="submitFunction(event)">
+            <form>
               <label>
                 <span>
                   <span>*</span> Your Name
@@ -45,7 +45,7 @@ export const ContactUs = () => {
                   <span>*</span> Message
                 </span>
                 <textarea
-                  rows="5"
+                  rows={5}
                   required
                   placeholder="Enter your message"
                 ></textarea>

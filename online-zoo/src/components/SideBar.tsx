@@ -5,7 +5,7 @@ import { usePets } from "../hooks/usePets";
 
 export const SideBar = () => {
   const [shrinked, setShrinked] = useState(true);
-  const { favouritePetIds } = useFavourites();
+  const { favouritePetIds, toggleFavourite } = useFavourites();
   const { pets, petImageSource } = usePets();
   return (
     <section className="sidebar-container">
@@ -33,8 +33,13 @@ export const SideBar = () => {
               const pet = pets.find((pet) => pet.id === item);
               if (!pet) return;
               return (
-                <div className="item">
-                  <div className="remove-favourite">remove</div>
+                <div className="item" key={pet.id}>
+                  <div
+                    className="remove-favourite"
+                    onClick={() => toggleFavourite(pet.id)}
+                  >
+                    remove
+                  </div>
                   <div className="item-image-container">
                     <img src={petImageSource(pet)} alt={pet.commonName} />
                   </div>

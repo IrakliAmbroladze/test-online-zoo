@@ -17,7 +17,6 @@ export const Cameras = () => {
         setStatus("error");
       });
   }, []);
-  console.log(cameras);
 
   if (status === "loading")
     return <div className="loader">Loading cameras...</div>;
