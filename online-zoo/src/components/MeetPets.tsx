@@ -1,5 +1,6 @@
 import type { Ref } from "react";
 import { MeetPetsSlider } from "./MeetPetsSlider";
+import { SearchPet } from "./SearchPet";
 
 type MeetPetsProps = {
   viewPortRef: Ref<HTMLDivElement>;
@@ -27,6 +28,7 @@ export const MeetPets = ({
             used.
           </p>
         </div>
+        <SearchPet />
         <div className="slider-arrows">
           <div className="left" onClick={moveLeft} />
           <div className="right" onClick={moveRight} />
