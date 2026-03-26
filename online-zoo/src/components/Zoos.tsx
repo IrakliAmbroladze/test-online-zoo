@@ -1,12 +1,20 @@
+import { useState } from "react";
+import { Cameras } from "./Cameras";
+
 export const Zoos = () => {
+  const [shrinked, setShrinked] = useState(false);
   return (
     <div className="page-zoos">
       <section className="cameras-container">
-        <div id="cameras" className="cameras">
-          <div className="double_arrow" id="double_arrow">
+        <div id="cameras" className={`cameras ${shrinked && "shrinked"}`}>
+          <div
+            className="double_arrow"
+            id="double_arrow"
+            onClick={() => setShrinked((prev) => !prev)}
+          >
             <img src="/assets/icons/double_arrow.svg" alt="double_arrow" />
           </div>
-          <div id="cameras-pet-list" className="cameras-pet-list"></div>
+          <Cameras />
         </div>
       </section>
 
