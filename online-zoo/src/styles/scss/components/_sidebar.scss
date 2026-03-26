@@ -1,0 +1,86 @@
+@use "../abstracts/" as *;
+
+.sidebar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .sidebar {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: absolute;
+    width: 300px;
+    max-height: 600px;
+    background-color: $navy;
+    transition: width 500ms ease-in-out;
+
+    .sidebar-header {
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $white;
+
+      gap: 10px;
+
+      .title {
+        color: $white ;
+        white-space: nowrap;
+        position: relative;
+
+        .count {
+          position: absolute;
+          color: $white;
+          font-size: 8px;
+          right: -10px;
+          bottom: -6px;
+        }
+      }
+
+      .double_arrow {
+        width: 50px;
+        height: 50px;
+
+        display: flex;
+        justify-content: right;
+        align-items: center;
+
+        img {
+          cursor: pointer;
+          user-select: none;
+          rotate: 180deg;
+        }
+      }
+    }
+
+    .list {
+
+      transition: width 500ms ease-in-out;
+
+      .item {
+        height: 170px;
+        border-bottom: 1px solid $white;
+        color: $white;
+        @include flex-row-center;
+      }
+    }
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shrinked {
+    width: 70px;
+
+    .sidebar-header {
+      .double_arrow {
+        img {
+          rotate: 360deg;
+        }
+      }
+    }
+  }
+
+}

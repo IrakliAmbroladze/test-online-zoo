@@ -86,15 +86,32 @@
 
       .animals-card {
         position: relative;
-        cursor: pointer;
 
-        label {
+        .pet-name,
+        .add-favourite {
           @include flex-row-center;
           position: absolute;
-          background-color: $navy;
           padding: 12px 20px;
+        }
+
+        .pet-name {
           border-radius: 5px 0 0 0;
+          background-color: $navy;
           left: 0;
+        }
+
+        .add-favourite {
+          gap: 5px;
+          cursor: pointer;
+          border-radius: 0 5px 0 0;
+          user-select: none;
+          background-color: $orange;
+          right: 0;
+
+        }
+
+        .is-favourite {
+          background-color: $turquoise;
         }
 
         @include flex-column-center;

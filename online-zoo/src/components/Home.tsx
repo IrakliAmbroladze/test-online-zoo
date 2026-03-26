@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSlider } from "../hooks/useSlider";
 import { FeedbacksSlider } from "./FeedbacksSlider";
 import { MeetPets } from "./MeetPets";
+import { SideBar } from "./SideBar";
 
 const CARD_SELECTOR = ".animals-card";
 const FEEDBACK_CARD_SELECTOR = ".feedback-card";
@@ -50,6 +51,7 @@ export const Home = () => {
   }, []);
   return (
     <div className="page-landing">
+      <SideBar />
       <main className="main">
         <div className="container">
           <div className="title-container">

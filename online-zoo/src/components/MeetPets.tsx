@@ -79,7 +79,7 @@ export const MeetPets = ({
           status={status}
         />
         <button className="btn btn--font-navy btn-favorite">
-          <span>choose your favorite</span>
+          <span>choose your favourite</span>
           <img src="./assets/icons/arrow.svg" alt="arrow" />
         </button>
       </div>
