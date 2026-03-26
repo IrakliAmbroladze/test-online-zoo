@@ -20,11 +20,13 @@ export const MeetPets = ({
   offset,
 }: MeetPetsProps) => {
   const [pets, setPets] = useState<Pet[]>([]);
+  const [filteredPets, setFilteredPets] = useState<Pet[]>([]);
   const [status, setStatus] = useState<Status>("loading");
   useEffect(() => {
     fetchPets()
       .then((data) => {
         setPets(data);
+        setFilteredPets(data);
         setStatus("success");
       })
       .catch((err) => {
@@ -33,6 +35,10 @@ export const MeetPets = ({
       });
   }, []);
   const handleSearch = (value: string) => {
+    const searchedData = pets.filter((pet) =>
+      pet.commonName.toLocaleLowerCase().includes(value.toLocaleLowerCase()),
+    );
+    setFilteredPets(searchedData);
     console.log("value in search function", value);
   };
 
@@ -56,7 +62,7 @@ export const MeetPets = ({
         <MeetPetsSlider
           sliderRef={sliderRef}
           offset={offset}
-          pets={pets}
+          pets={filteredPets}
           status={status}
         />
         <button className="btn btn--font-navy btn-favorite">
