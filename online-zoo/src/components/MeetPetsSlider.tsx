@@ -3,6 +3,7 @@ import type { Pet } from "../types/Pet";
 import { PETS } from "../types/PETS";
 import type { Status } from "../types/Status";
 import { Star, StarHalf } from "lucide-react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const getAnimalImage = (commonName: string) =>
   Object.keys(PETS).find((name) => commonName.toLowerCase().includes(name)) ??
@@ -16,15 +17,20 @@ type Props = {
 };
 
 export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
+  const [favouritePetIds, setFavouritePetIds] = useLocalStorage<number[]>(
+    "favourites",
+    [],
+  );
+
   if (status === "loading")
     return <div className="loader">Loading pets...</div>;
   if (status === "error")
     return <p>Something went wrong. Please, refresh the page</p>;
-  const favourite_pet_ids = [1, 2, 4];
   const handleFavouriteClick = (id: number) => {
-    localStorage.setItem("favourites", JSON.stringify([id]));
+    setFavouritePetIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
   };
-
   return (
     <div
       ref={sliderRef}
@@ -32,10 +38,10 @@ export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
       className="slider-pets-in-zoo"
     >
       {pets.map((pet) => {
-        const is_favourite = favourite_pet_ids.includes(pet.id);
+        const is_favourite = favouritePetIds.includes(pet.id);
         const animal = getAnimalImage(pet.commonName);
         return (
-          <div key={pet.commonName} className="animals-card">
+          <div key={pet.id} className="animals-card">
             <label className="pet-name">{pet.name}</label>
             <label
               className={`add-favourite ${is_favourite ? "is-favourite" : ""}`}
