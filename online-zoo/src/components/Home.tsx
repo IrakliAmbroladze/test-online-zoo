@@ -1,17 +1,32 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MeetPetsSlider } from "./MeetPetsSlider";
 import { useSlider } from "../hooks/useSlider";
 
-const VIEWPORT = 1100;
 const CARD_SELECTOR = ".animals-card";
 
 export const Home = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const viewPortRef = useRef<HTMLDivElement>(null);
+  const [VIEWPORT, setVIEWPORT] = useState(0);
   const { offset, moveLeft, moveRight } = useSlider(
     sliderRef,
     VIEWPORT,
     CARD_SELECTOR,
   );
+  useEffect(() => {
+    const handleResize = () => {
+      if (viewPortRef.current) {
+        const width = viewPortRef.current.offsetWidth;
+        setVIEWPORT(width);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="page-landing">
@@ -89,7 +104,7 @@ export const Home = () => {
         </div>
       </section>
       <section className="meet-pets">
-        <div className="container" id="pets-container">
+        <div ref={viewPortRef} className="container" id="pets-container">
           <div className="intro">
             <h2>Meet some our pets</h2>
             <p>
