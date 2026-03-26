@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { MeetPetsSlider } from "./MeetPetsSlider";
 import { useSlider } from "../hooks/useSlider";
+import { FeedbacksSlider } from "./FeedbacksSlider";
 
 const CARD_SELECTOR = ".animals-card";
+const FEEDBACK_CARD_SELECTOR = ".feedback-card";
 
 export const Home = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,12 @@ export const Home = () => {
     VIEWPORT,
     CARD_SELECTOR,
   );
+  const {
+    offset: feedbacksOffset,
+    moveLeft: moveFeedbackLeft,
+    moveRight: moveFeedbackRight,
+  } = useSlider(feedbacksRef, feedbacksVIEWPORT, FEEDBACK_CARD_SELECTOR);
+
   useEffect(() => {
     const handleResize = () => {
       if (viewPortRef.current) {
@@ -147,10 +155,18 @@ export const Home = () => {
           id="feedback-content-container"
           ref={feedbacksRef}
         >
-          <div id="feedback-container" className="feedback-container"></div>
+          <FeedbacksSlider sliderRef={feedbacksRef} offset={feedbacksOffset} />
           <div className="slider-arrows">
-            <div className="left" id="sldr_prev_arrow"></div>
-            <div className="right" id="sldr_next_arrow"></div>
+            <div
+              className="left"
+              id="sldr_prev_arrow"
+              onClick={moveFeedbackLeft}
+            ></div>
+            <div
+              className="right"
+              id="sldr_next_arrow"
+              onClick={moveFeedbackRight}
+            ></div>
           </div>
 
           <button className="btn btn--pure-text-white btn-favorite">
