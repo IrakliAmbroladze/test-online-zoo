@@ -1,9 +1,10 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
+import { useFavourites } from "../hooks/useFavourites";
 
 export const SideBar = () => {
   const [shrinked, setShrinked] = useState(true);
-  const list: string[] = ["one", "two"];
+  const { favouritePetIds } = useFavourites();
   return (
     <section className="sidebar-container">
       <div className={`sidebar ${shrinked && "shrinked"}`}>
@@ -20,7 +21,8 @@ export const SideBar = () => {
           </div>
         </div>
         <div className="list">
-          {!shrinked && list.map((item) => <div className="item">{item}</div>)}
+          {!shrinked &&
+            favouritePetIds.map((item) => <div className="item">{item}</div>)}
         </div>
       </div>
     </section>
