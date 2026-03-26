@@ -1,9 +1,7 @@
-import { useEffect, useState, type Ref } from "react";
-import { fetchPets } from "../lib/fetchPets";
+import { type Ref } from "react";
 import type { Pet } from "../types/Pet";
 import { PETS } from "../types/PETS";
-
-type Status = "loading" | "error" | "success";
+import type { Status } from "../types/Status";
 
 const getAnimalImage = (commonName: string) =>
   Object.keys(PETS).find((name) => commonName.toLowerCase().includes(name)) ??
@@ -12,24 +10,11 @@ const getAnimalImage = (commonName: string) =>
 type Props = {
   sliderRef: Ref<HTMLDivElement | null>;
   offset: number;
+  pets: Pet[];
+  status: Status;
 };
 
-export const MeetPetsSlider = ({ sliderRef, offset }: Props) => {
-  const [pets, setPets] = useState<Pet[]>([]);
-  const [status, setStatus] = useState<Status>("loading");
-
-  useEffect(() => {
-    fetchPets()
-      .then((data) => {
-        setPets(data);
-        setStatus("success");
-      })
-      .catch((err) => {
-        console.error(err instanceof Error ? err.message : err);
-        setStatus("error");
-      });
-  }, []);
-
+export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
   if (status === "loading")
     return <div className="loader">Loading pets...</div>;
   if (status === "error")
