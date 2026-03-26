@@ -30,7 +30,7 @@ export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
         const animal = getAnimalImage(pet.commonName);
         return (
           <div key={pet.commonName} className="animals-card">
-            <label>{pet.commonName}</label>
+            <label>{pet.name}</label>
             <div className="cover">
               <img src={`./assets/images/${animal}.png`} alt={animal} />
             </div>

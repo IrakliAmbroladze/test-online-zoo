@@ -34,12 +34,23 @@ export const MeetPets = ({
         setStatus("error");
       });
   }, []);
+
   const handleSearch = (value: string) => {
-    const searchedData = pets.filter((pet) =>
-      pet.commonName.toLocaleLowerCase().includes(value.toLocaleLowerCase()),
-    );
-    setFilteredPets(searchedData);
-    console.log("value in search function", value);
+    const searchValue = value.toLowerCase();
+
+    const filtered = pets.filter((pet) => {
+      const common = pet.commonName?.toLowerCase() ?? "";
+      const desc = pet.description?.toLowerCase() ?? "";
+      const name = pet.name?.toLowerCase() ?? "";
+
+      return (
+        common.includes(searchValue) ||
+        desc.includes(searchValue) ||
+        name.includes(searchValue)
+      );
+    });
+
+    setFilteredPets(filtered);
   };
 
   return (
