@@ -41,7 +41,10 @@ export const SideBar = () => {
                     remove
                   </div>
                   <div className="item-image-container">
-                    <img src={petImageSource(pet)} alt={pet.commonName} />
+                    <img
+                      src={petImageSource(pet.commonName)}
+                      alt={pet.commonName}
+                    />
                   </div>
                   <div className="text-container">
                     <div>{pet.name}</div>

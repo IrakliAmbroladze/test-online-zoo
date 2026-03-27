@@ -5,10 +5,12 @@ import { PETS } from "../types/PETS";
 import { fetchPetFullInfo } from "../lib/fetchPetFullInfo";
 import type { PetFullInfo } from "../types/PetFullInfo";
 import type { Status } from "../types/Status";
+import { usePets } from "../hooks/usePets";
 
 export const Zoos = () => {
   const [shrinked, setShrinked] = useState(true);
   const [searchParams] = useSearchParams();
+  const { petImageSource } = usePets();
   const [pet, setPet] = useState<PetFullInfo>();
   const [status, setStatus] = useState<Status>("loading");
   const petId: number = Number(searchParams.get("petId")) || 1;
@@ -52,6 +54,22 @@ export const Zoos = () => {
               </button>
             </div>
           )}
+          <div className="video-cover">
+            {pet && (
+              <>
+                <img
+                  src={petImageSource(pet.commonName)}
+                  alt={pet.commonName}
+                  className="cover"
+                />
+                <img
+                  src="/assets/icons/bottom-controls.svg"
+                  alt="controls"
+                  className="bottom-control"
+                />
+              </>
+            )}
+          </div>
         </div>
       </main>
 

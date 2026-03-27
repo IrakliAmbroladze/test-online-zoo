@@ -23,8 +23,8 @@ export const PetsProvider = ({ children }: { children: ReactNode }) => {
     Object.keys(PETS).find((name) => commonName.toLowerCase().includes(name)) ??
     "koala";
 
-  const petImageSource = (pet: Pet) => {
-    const animal = getAnimalImage(pet.commonName);
+  const petImageSource = (commonName: string) => {
+    const animal = getAnimalImage(commonName);
     return `/assets/images/${animal}.png`;
   };
   return (
