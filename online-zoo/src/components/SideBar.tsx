@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import { useFavourites } from "../hooks/useFavourites";
 import { usePets } from "../hooks/usePets";
+import { Link } from "react-router-dom";
 
 export const SideBar = () => {
   const [shrinked, setShrinked] = useState(true);
@@ -40,6 +41,12 @@ export const SideBar = () => {
                   >
                     remove
                   </div>
+                  <Link to={`zoos?petId=${pet.id}`} className="live-btn">
+                    <button className="btn btn--pure-text-orange">
+                      <span>live cam</span>
+                    </button>
+                  </Link>
+
                   <div className="item-image-container">
                     <img
                       src={petImageSource(pet.commonName)}

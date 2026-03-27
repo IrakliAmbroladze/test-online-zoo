@@ -68,14 +68,24 @@
         overflow: hidden;
         position: relative;
 
-        .remove-favourite {
+        .remove-favourite,
+        .live-btn {
           position: absolute;
-          padding: 4px 4px;
           cursor: pointer;
           user-select: none;
+          right: 10px;
+          padding: 4px 4px;
+        }
+
+        .remove-favourite {
+
           background-color: $orange;
           top: 10px;
-          right: 10px;
+
+        }
+
+        .live-btn {
+          bottom: 10px
         }
 
         .remove-favourite:hover {
