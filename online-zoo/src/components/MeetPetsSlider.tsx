@@ -54,7 +54,7 @@ export const MeetPetsSlider = ({ sliderRef, offset, pets, status }: Props) => {
             </div>
             <div className="title">{pet.commonName}</div>
             <p>{pet.description}</p>
-            <Link to={`zoos?pet=${animal}`}>
+            <Link to={`zoos?petId=${pet.id}`}>
               <button className="btn btn--pure-text-orange">
                 <span>view live cam</span>
                 <img src="./assets/icons/arrow.svg" alt="arrow" />
